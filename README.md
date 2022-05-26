@@ -26,7 +26,7 @@ List the ready features here:
  - Sync balance&budget
 
 
-## Screenshots
+## Screenshot/s
 ![budget_tracker home](https://user-images.githubusercontent.com/55667596/170559841-5372452f-a528-4c13-8507-91075d1dcbb3.jpg)
 
 
