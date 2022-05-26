@@ -24,6 +24,7 @@ List the ready features here:
  - Light/Dark mode
  - Add/Delete item
  - Sync balance&budget
+ - Bottom navigation bar
 
 
 ## Screenshot/s
