@@ -144,7 +144,7 @@ class _AddTransactionDialogState extends State<AddTransactionDialog> {
                       Navigator.pop(context);
                     }
                   }),
-                  child: const Icon(Icons.add))
+                  child: const Text("Add"))
             ]),
           )),
     );

@@ -63,7 +63,12 @@ class LocalStorageService {
     final balanceBox = Hive.box<double>(balanceBoxKey);
 
     final currentBalance = balanceBox.get("balance") ?? 0.0;
-    balanceBox.put("balance", currentBalance + item.amount);
+
+    if (item.isExpense) {
+      balanceBox.put("balance", currentBalance + item.amount);
+    } else {
+      balanceBox.put("balance", currentBalance - item.amount);
+    }
     // if (Hive.openBox<TransactionItem>(transactionsBoxKey).toString() == "") {
     //   balanceBox.put("balance", 0.0);
     // }
@@ -71,7 +76,7 @@ class LocalStorageService {
 
   Future<void> deleteTransactionItem(TransactionItem item) async {
     final transactions = Hive.box<TransactionItem>(transactionsBoxKey);
-    final transInt = Hive.box<TransactionItem>(transactionsBoxKey).length;
+
     // final transactionsBool =
     //     Hive.box<TransactionItem>(transactionsBoxKey).isEmpty;
     final balanceBox = Hive.box<double>(balanceBoxKey);
@@ -83,7 +88,7 @@ class LocalStorageService {
     });
     transactions.delete(desiredKey);
     saveBalanceOnDelete(item);
-
+    final transInt = Hive.box<TransactionItem>(transactionsBoxKey).length;
     if (transInt == 0) {
       balanceBox.put("balance", 0.0);
     }

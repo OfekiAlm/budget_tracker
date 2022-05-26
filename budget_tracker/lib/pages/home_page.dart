@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -45,7 +44,7 @@ class HomePage extends StatelessWidget {
                       builder: ((context, value, child) {
                         final balance = value.getBalance(); // <- new
                         final budget = value.getBudget(); // <- new
-                        double percentage = balance / budget;
+                        double percentage = 1 - balance / budget;
                         // Making sure percentage isnt negative and isnt bigger than 1
                         if (percentage < 0) {
                           percentage = 0;
@@ -103,11 +102,6 @@ class HomePage extends StatelessWidget {
                             item: value.items[index],
                           );
                         });
-                    //  List.generate(
-                    // items.length,
-                    // (index) => TransactionCard(
-                    //       item: items[index],
-                    //     )),
                   }),
                 )
               ],
